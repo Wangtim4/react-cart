@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { useReducer } from "react";
 import Navbar from "./components/Navbar";
 import Products from "./components/Product";
@@ -12,8 +13,10 @@ function App() {
     const index = cartList.findIndex((item) =>
       item.id === action.payload.id
     );
-    console.log(index);
-    console.log(action);
+    const total = calculateTotal(cartList);
+    console.log(total);
+    // console.log(index);
+    // console.log(action);
     switch (action.type) {
       case 'ADD_CART':
         if (index === -1) {
@@ -32,7 +35,7 @@ function App() {
         // },0)
         
         // 縮寫
-        const total = calculateTotal(cartList);
+        
         
         return {
           ...state,
